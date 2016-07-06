@@ -1,0 +1,114 @@
+@import url('http://fonts.googleapis.com/css?family=Lato');
+@import url('http://fonts.googleapis.com/css?family=Oswald');
+@import url('http://fonts.googleapis.com/css?family=Droid+Sans');
+
+html {
+    font-family: 'Droid Sans', slab-serif;
+    color: #262730;
+}
+
+h1 {
+    font-family: 'Oswald';
+}
+
+h2 {
+    color: #e071e8;
+}
+
+.container {
+    width: 100%;
+    height: 100%;
+    margin: 0 auto;
+    text-align: center;
+}
+
+form {
+    width: 95%;
+    margin: 0 auto;
+}
+
+@media only screen and (min-width:768px){
+    html {
+        font-size: .9em;
+        line-height: 1.2;
+        letter-spacing: 0;
+    }
+
+    h1 {
+        font-size: 2em;
+        line-height: 1.2;
+        letter-spacing: 1px;
+    }
+
+    h2 {
+        font-size: 1.5em;
+        line-height: 1.2;
+        letter-spacing: 1px;
+    }
+
+    #hints {
+        display: inline-block;
+        width: 44%;
+        margin: 1em 0;
+        background-color: #f6f6f6;
+        border-right: 1px solid #000;
+        border-radius: 10px;
+    }
+
+    .hint-img {
+        margin: 0 auto;
+        width: 200px;
+        height: auto;
+    }
+
+    #input {
+        display: inline-block;
+        width: 44%;
+        margin: 1em 0;
+        background-color: #f6f6f6;
+        border-radius: 10px;
+    }
+}
+
+@media only screen and (max-width:767px){
+    #hints {
+        float: none;
+        width: 90%;
+        margin: 0 auto;
+        background-color: #f6f6f6;
+        border-right: 1px solid #000;
+    }
+
+    .hint-img {
+        margin: 0 auto;
+        width: 150px;
+        height: auto;
+    }
+
+    #inputs {
+        float: none;
+        width: 90%;
+        margin: 0 auto;
+        background-color: #f6f6f6;
+    }
+}
+
+@media only screen and (max-width:319px){
+    #hints {
+        float: none;
+        width: auto;
+        min-height: 5em;
+        background-color: #f6f6f6;
+        border-right: 1px solid #000;
+    }
+
+    .hint-img {
+        margin: 0 auto;
+        width: 100px;
+        height: auto;
+    }
+
+    #inputs {
+        background-color: #f6f6f6;
+    }
+}
