@@ -4,36 +4,15 @@ $(document).ready(function() {
     $('#input').hide();
 
     function Quiz() {
+        var quiz;
+        $.getJSON('people.json', function (data) {
+            quiz = data.quiz;
+            console.log(quiz);
 
-        var quiz = [
-            {
-                "name": "arya stark",
-                "hints": [
-                    "This person used to have a big family",
-                    "This person had a sword named needle",
-                    "VALAR MORGHULIS",
-                    "http://66.media.tumblr.com/d01b1df6cc8eeba02b0c65bdfc15f122/tumblr_mta951YMYr1qb0u5go7_1280.jpg"
-                ]
-            },
-            {
-                "name": "brienne of tarth",
-                "hints": [
-                    "This person is very badass",
-                    "This person will fight you and win",
-                    "I SENTENCE YOU TO DIE!!",
-                    "https://lh3.googleusercontent.com/-jlcdNpKEmBE/UQfho_84TFI/AAAAAAAAAJ4/lw0-FwhQgbI/s800/brienne-meme-01.jpg"
-                ]
-            },
-            {
-                "name": "john snow",
-                "hints": [
-                    "This person is always brooding",
-                    "This person lives in a cold place",
-                    "This person knows nothing",
-                    "http://assets.nydailynews.com/polopoly_fs/1.2614988.1461691112!/img/httpImage/image.jpg_gen/derivatives/gallery_1200/worth.jpg"
-                ]
-            }
-        ];
+        });
+
+        var counter = 0,
+            clicks = 0;
 
         $('form input').on('keypress', function(e) {
             return e.which !== 13;
@@ -45,8 +24,6 @@ $(document).ready(function() {
             }
         );
 
-        var counter = 0,
-            clicks = 0;
 
         this.next_hint = function() {
 
