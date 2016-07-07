@@ -11,66 +11,36 @@ $(document).ready(function() {
 
         });
 
-        var counter = 0,
-            clicks = 0;
+        var counter = 0;
 
         $('form input').on('keypress', function(e) {
             return e.which !== 13;
         });
 
-        $('input:text').click(
-            function(){
-                $(this).val('');
-            }
-        );
-
 
         this.next_hint = function() {
 
             $('#hints').fadeIn();
-            $('.hint').fadeIn();
             $('#input').fadeIn();
+            
+            $('#next-hint').prop('disabled', true);
 
-            console.log(counter);
-            console.log($('#hints > .hint').length);
-            clicks = clicks+1;
-            console.log('these are the clicks: ' + clicks);
+            var hintCounter = $('#hints > .hint').length,
+                nextHint = quiz[counter]['hints'][hintCounter],
+                hint = $('#hint-template > .hint').clone().html(nextHint);
 
-            var hints = quiz[counter]['hints'],
-                hintCounter = $('#hints > .hint').length,
-                nextHint = hints[hintCounter],
-                finalHintImage = quiz[counter]['hints'][quiz[counter]['hints'].length-1],
-                hint = $('#hint-template > .hint').clone().html(nextHint),
-                hintImg = $('#hint-template > .hint-img').clone().attr('src',finalHintImage);
 
-            if (hintCounter == hints.length-1 && clicks !== hints.length+1) {
+            if (hintCounter == quiz[counter]['hints'].length) {
 
-                $('.hint-img').fadeIn();
-                $('#hints').append(hintImg);
-                alert('this is the last hint! guess a name or let s move on');
-
-            } else if(hintCounter == hints.length-1 && clicks == hints.length+1 && counter !== quiz.length-1){
-
-                if (!alert('too bad! on to the next person!')) {
-
-                    this.next_person();
-                    clicks = 1;
-
-                }
-
-            } else if(hintCounter == hints.length-1 && clicks == hints.length+1 && counter == quiz.length-1) {
-
-                if (!alert('no more people to show! bye')) {
-
-                    window.location.reload();
-
-                }
+                this.next_person();
 
             } else {
 
-                $('.hint').fadeIn();
                 $('#hints').append(hint);
+
             }
+
+            $('#next-hint').prop('disabled', false);
 
         };
 
@@ -78,8 +48,11 @@ $(document).ready(function() {
 
             if (quiz[counter]['name'] == $('#inputName').val().toLowerCase()) {
 
-                alert('correct name! on to the next person');
+                alert('you are correct!');
+
                 this.next_person();
+
+                $('input:text').val('');
 
             } else {
 
@@ -89,15 +62,14 @@ $(document).ready(function() {
         };
 
         this.next_person = function () {
-            if(counter !== quiz.length-1){
+
+            if (counter !== quiz.length-1) {
 
                 counter = counter+1;
-                console.log('this is the counter ' + counter);
 
                 var nextPersonHint = quiz[counter]['hints'][0],
                     hint = $('#hint-template > .hint').clone().html(nextPersonHint);
 
-                $('.hint').fadeIn();
                 $('#hints').html(hint);
 
             } else {
@@ -114,12 +86,13 @@ $(document).ready(function() {
 
     }
 
-
-
     var theQuiz = new Quiz();
 
     $('#startQuiz').click(function(){
         theQuiz.next_hint();
+        setTimeout(function () {
+            $('#start').fadeOut();
+        }, 500)
     })
 
     $('#next-hint').click(function(){
