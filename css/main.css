@@ -49,10 +49,15 @@ form {
     #hints {
         display: inline-block;
         width: 44%;
-        margin: 1em 0;
+        height: 25em;
+        vertical-align: middle;
+        margin: 0;
         background-color: #f6f6f6;
-        border-right: 1px solid #000;
         border-radius: 10px;
+    }
+
+    .hint {
+        padding-top: 1em;
     }
 
     .hint img {
@@ -64,9 +69,16 @@ form {
     #input {
         display: inline-block;
         width: 44%;
-        margin: 1em 0;
+        height: 25em;
+        vertical-align: middle;
+        margin: 0;
         background-color: #f6f6f6;
         border-radius: 10px;
+    }
+
+    form {
+        display: inline-block;
+        vertical-align: middle;
     }
 }
 
@@ -76,7 +88,6 @@ form {
         width: 90%;
         margin: 0 auto;
         background-color: #f6f6f6;
-        border-right: 1px solid #000;
     }
 
     .hint-img {
@@ -99,7 +110,6 @@ form {
         width: auto;
         min-height: 5em;
         background-color: #f6f6f6;
-        border-right: 1px solid #000;
     }
 
     .hint-img {

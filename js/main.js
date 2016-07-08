@@ -74,7 +74,7 @@ $(document).ready(function() {
 
             } else {
 
-                if(!alert('this is the end of the game! sorry you ran out of hints and people')){
+                if(confirm('this is the end of the game! sorry you ran out of hints and people')){
 
                     window.location.reload();
 
@@ -90,9 +90,7 @@ $(document).ready(function() {
 
     $('#startQuiz').click(function(){
         theQuiz.next_hint();
-        setTimeout(function () {
-            $('#start').fadeOut();
-        }, 500)
+        $('#start').fadeOut();
     })
 
     $('#next-hint').click(function(){
